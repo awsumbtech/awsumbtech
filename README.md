@@ -25,6 +25,27 @@ I build the automation and AI tooling that lets a small IT team run like a much 
 
 ---
 
+### Shared task board for people and AI agents
+**Problem:** My AI agents were doing real work, but the only record of it was the chat window it happened in. Nobody could see which agent was on which task, an agent had no good way to stop and ask me a question, and I was copying status between chats, my to-do list, and GitHub by hand.
+
+**What I built:** A task tracker where people and AI agents work on the same board, as teammates:
+- **Installable web app** (phone and desktop) with lists, a board, a sortable table, a calendar, a timeline, an Inbox, and a keyboard-driven triage mode. It works offline and syncs when back online
+- **Every task has a short ID** (`T-12`) that people, agents, and pull requests all use to point at the same work
+- **Agents work through a CLI and a local MCP server.** Each tool runs the same validated commands, under the agent's own name, so every change shows which agent made it
+- **"Needs you" questions:** instead of guessing, an agent asks a question with two to four choices. It waits in one place until I tap an answer from my phone, and then the agent reads the answer and continues
+- **Working-on markers** show which agent is on which task and stop two agents from picking up the same one
+- **Pull request links:** a PR that names a task appears on that task with its status. An open PR moves the task to in progress, and merging it marks the task done
+- **Data lives as JSON in a private GitHub repo.** Every change is an operation that merges cleanly when people and agents edit at the same time, and the full history is in git
+- Hosted on Cloudflare Pages behind Cloudflare Access
+
+AI coding agents wrote most of the code against specs I set. Every change goes through a pull request with CI (unit tests and Playwright end-to-end tests) before I review and merge it.
+
+**Result:** Agents moved from "a chat I have to check" to teammates whose work is visible on a shared board. I can see at a glance which agent is on which task, answer their questions in seconds from my phone, and trace any change back to the agent or person who made it. This is the same pattern I want for our technicians: AI that works inside the workflow, with a clear record of what it did.
+
+**Stack:** React, TypeScript, Vite, PWA (service worker, offline sync), Cloudflare Pages and Access, GitHub as the datastore, Node.js CLI, MCP, Vitest, Playwright, GitHub Actions
+
+---
+
 ### Conditional Access audit tool (`ca_audit.py`)
 **Problem:** Conditional Access policies drift. Exclusions pile up, new apps and users slip outside coverage, and the Entra portal makes it hard to see the whole picture at once.
 
