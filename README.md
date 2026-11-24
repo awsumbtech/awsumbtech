@@ -36,11 +36,11 @@ I build the automation and AI tooling that lets a small IT team run like a much 
 - **Working-on markers** show which agent is on which task and stop two agents from picking up the same one
 - **Pull request links:** a PR that names a task appears on that task with its status. An open PR moves the task to in progress, and merging it marks the task done
 - **Data lives as JSON in a private GitHub repo.** Every change is an operation that merges cleanly when people and agents edit at the same time, and the full history is in git
-- Hosted on Cloudflare Pages behind Cloudflare Access
+- **Hosting:** Cloudflare Pages behind Cloudflare Access
 
 AI coding agents wrote most of the code against specs I set. Every change goes through a pull request with CI (unit tests and Playwright end-to-end tests) before I review and merge it.
 
-**Result:** Agents moved from "a chat I have to check" to teammates whose work is visible on a shared board. I can see at a glance which agent is on which task, answer their questions in seconds from my phone, and trace any change back to the agent or person who made it. This is the same pattern I want for our technicians: AI that works inside the workflow, with a clear record of what it did.
+**Result:** Agents moved from "a chat I have to check" to teammates whose work is visible on a shared board. I can see at a glance which agent is on which task, answer their questions in seconds from my phone, and trace any change back to the agent or person who made it. I'm now expanding it for small business owners, so they and their AI assistants can share one board: the AI suggests and tracks tasks, already knows about whatever the owner adds, and every update shows which assistant made it. The same pattern applies to our technicians: AI that works inside the workflow, with a clear record of what it did.
 
 **Stack:** React, TypeScript, Vite, PWA (service worker, offline sync), Cloudflare Pages and Access, GitHub as the datastore, Node.js CLI, MCP, Vitest, Playwright, GitHub Actions
 
